@@ -10,7 +10,7 @@ public class Calculator {
 
         if (rpn.size() != 3) throw new Exception("Incorrect expression");
 
-        double result = 0;
+        double result;
 
         switch (rpn.pop()) {
             case "+":
@@ -37,7 +37,8 @@ public class Calculator {
         return false;
     }
 
-    private static ArrayDeque<String> getRPN(String expression) {
+    private static ArrayDeque<String> getRPN(String expression) throws Exception {
+        if ("".equals(expression)) throw new Exception("Expression is empty");
         ArrayDeque<String> rpn = new ArrayDeque<>();
         StringBuilder builder = new StringBuilder();
         char[] expSequence = expression.toCharArray();
