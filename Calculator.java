@@ -5,9 +5,12 @@ public class Calculator {
 
     private static final char[] operators = {'+', '-', '*'};
 
-    public static double calculate(String expression) {
+    public static double calculate(String expression) throws Exception {
 
         ArrayDeque<String> rpn = getRPN(expression);
+
+        if (rpn.size() != 3) throw new Exception("Incorrect expression");
+
         double result = 0;
 
         switch (rpn.pop()) {
@@ -21,8 +24,7 @@ public class Calculator {
                 result = Double.parseDouble(rpn.pop()) * Double.parseDouble(rpn.pop());
                 break;
             default:
-                result = 0;
-                break;
+                throw new Exception("Incorrect expression");
         }
 
         return result;
