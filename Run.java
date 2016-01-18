@@ -6,8 +6,13 @@ public class Run {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter simple expression ex. 12 + 5:");
         String expression = scanner.nextLine();
-        double result = Calculator.calculate(expression);
-        System.out.println("Result = " + result);
+        double result = 0;
+        try {
+            result = Calculator.calculate(expression);
+            System.out.println("Result = " + result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
